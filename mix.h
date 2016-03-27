@@ -22,6 +22,9 @@
 *       Can take on two values, NO_OVERFLOW, OVERFLOW
 * Memory - 4000 words from [0, 3999].
 */
+#ifndef MIX_MACHINE_H
+#define MIX_MACHINE_H
+
 
 #define NUM_WORD_BYTES 5
 #define NUM_INDEX_REGS 6
@@ -59,3 +62,5 @@ typedef struct _mix
     word_pt mem;
 
 } mix, *mix_pt;
+
+#endif

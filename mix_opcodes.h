@@ -4,6 +4,9 @@
 * as defined by Knuth in Volume 1, Section 1.3.1
 * Defines the C value for each op code.
 */
+#ifndef MIX_OPCODES_H
+#define MIX_OPCODES_H
+
 
 // Load operators.
 #define LDA 8
@@ -179,3 +182,5 @@
 // Conversion operators.
 #define NUM 5       // F = 0.
 #define CHAR NUM    // F = 1.
+
+#endif
