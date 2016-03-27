@@ -28,7 +28,7 @@ int main(int argc, char** argv)
         printf("Unable to open MIXAL source file %s\n", argv[1]);
         return -1;
     }
-    
+    printf("Processing MIXAL source file %s...\n", argv[1]);
     fclose(source);
     return 0;
 }

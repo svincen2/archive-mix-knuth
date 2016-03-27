@@ -1,7 +1,7 @@
 objs = token.o lexer.o assembler.o
 
 compile = gcc -std=c11 -c
-link = gcc -o lexer
+link = gcc -o assembler
 
 assembler : $(objs)
 	$(link) $(objs)
