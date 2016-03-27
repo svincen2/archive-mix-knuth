@@ -4,6 +4,7 @@
 */
 #include "token.h"
 #include "lexer.h"
+#include <stdio.h>
 
 
 /*
@@ -16,6 +17,18 @@
 */
 int main(int argc, char** argv)
 {
-
+    if(argc < 2)
+    {
+        printf("Usage: expected a MIXAL source file name\n");
+        return -1;
+    }
+    FILE* source;
+    if(!(source = fopen(argv[1], "r")))
+    {
+        printf("Unable to open MIXAL source file %s\n", argv[1]);
+        return -1;
+    }
+    
+    fclose(source);
     return 0;
 }
