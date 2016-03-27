@@ -2,6 +2,7 @@
 * mix_opcodes.h
 * Operation codes for the MIX machine,
 * as defined by Knuth in Volume 1, Section 1.3.1
+* Defines the C value for each op code.
 */
 
 // Load operators.

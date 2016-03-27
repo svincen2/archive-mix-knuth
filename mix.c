@@ -1,6 +1,8 @@
 /*
 * mix.c
-* 
+* Implements a MIX machine as described in "mix.h"
+* Main program takes a MIX program to run from the command line.
+* The MIX machine is initialized, and the program is ran (if possible).
 */
 #include "mix.h"
 #include "mix_opcodes.h"
