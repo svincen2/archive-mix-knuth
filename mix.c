@@ -53,7 +53,7 @@ void clear_index_regs(mix_pt);
 void clear_reg(char[INDEX_REG_SIZE]);
 
 // Run MIX program.
-void run(mix_pt, FILE*);
+int run(mix_pt, char*);
 
 
 /* MIX backend function definitions. */
@@ -164,9 +164,17 @@ void shutdown(mix_pt machine)
 * Param machine - MIX machine.
 * Param program - MIX program.
 */
-void run(mix_pt machine, FILE* program)
+int run(mix_pt machine, char* file)
 {
-
+    FILE* program;
+    if(!(program = fopen(file, "r")))
+    {
+        printf("Unable to open file: %s", file);
+        return -1;
+    }
+    printf("Running program %s...\n", file);
+    fclose(program);
+    return 0;
 }
 
 
@@ -180,19 +188,15 @@ void run(mix_pt machine, FILE* program)
 */
 int main(int argc, char** argv)
 {
-    FILE* program;
-    if(!(program = fopen(argv[1], "r")))
+    if(argc < 2)
     {
-        printf("Unable to open file: %s", argv[1]);
+        printf("Usage: expected a MIX machine program file name");
         return -1;
     }
+
     mix machine;
     startup_init(&machine);
-    
-    printf("Running program %s...\n", argv[1]);
-    run(&machine, program);
-    
+    int result = run(&machine, argv[1]);
     shutdown(&machine);
-    fclose(program);
-    return 0;
+    return result;
 }
