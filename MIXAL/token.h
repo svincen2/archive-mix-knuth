@@ -13,7 +13,7 @@
 // Type of token, one of: OP, NUM (or NONE if no token type exists).
 typedef enum
 {
-    NONE, OP, NUM
+    NONE, OP, NUM, ID
 } token_type;
 
 
