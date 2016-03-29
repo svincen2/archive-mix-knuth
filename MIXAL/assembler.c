@@ -8,6 +8,17 @@
 
 
 /*
+* Assemble the given MIXAL source file into MIX machine language.
+* Writes the machine code to a file with the same name,
+* but with the extension ".o"
+*/
+void assemble(FILE* source)
+{
+    token tk;
+}
+
+
+/*
 * Main entry point into the program.
 * Takes a MIXAL source file and assembles it into MIX machine language.
 * Param argc - Number of command line arguments.
@@ -30,7 +41,7 @@ int main(int argc, char** argv)
     }
 
     printf("Processing MIXAL source file %s...\n", argv[1]);
-
+    assemble(source);
     fclose(source);
     return 0;
 }

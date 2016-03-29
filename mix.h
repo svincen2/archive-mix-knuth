@@ -41,6 +41,9 @@ typedef struct _word
 // Mix machine.
 typedef struct _mix
 {
+    // Program counter.
+    word PC;
+    
     // Registers.
     word A;
     word X;
