@@ -17,7 +17,7 @@ typedef enum
 } token_type;
 
 
-// A token produced by MIX lexer.
+// A token produced by MIXAL lexer.
 typedef struct
 {
     token_type type;

@@ -11,5 +11,7 @@
 */
 int next_token(token_pt tk, FILE* input)
 {
+    if(feof(input)) return 0;   // No input left to process.
     
+    return 1;
 }

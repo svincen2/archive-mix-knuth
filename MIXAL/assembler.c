@@ -4,7 +4,24 @@
 */
 #include "token.h"
 #include "lexer.h"
+#include <stdlib.h>
 #include <stdio.h>
+
+
+/*
+* Attempts to open the file with the given name.
+* Param file - Name of the file to open.
+*/
+FILE* open_file(char* file)
+{
+    FILE* source;
+    if(!(source = fopen(file, "r")))
+    {
+        printf("Unable to open MIXAL source file %s\nExiting...", file);
+        exit(-1);
+    }
+    return source;
+}
 
 
 /*
@@ -12,8 +29,10 @@
 * Writes the machine code to a file with the same name,
 * but with the extension ".o"
 */
-void assemble(FILE* source)
+void assemble(char* file)
 {
+    FILE* source = open_file(file);
+    printf("Processing MIXAL source file %s...\n", file);
     token tk;
 }
 
@@ -33,15 +52,6 @@ int main(int argc, char** argv)
         printf("Usage: expected a MIXAL source file name\n");
         return -1;
     }
-    FILE* source;
-    if(!(source = fopen(argv[1], "r")))
-    {
-        printf("Unable to open MIXAL source file %s\n", argv[1]);
-        return -1;
-    }
-
-    printf("Processing MIXAL source file %s...\n", argv[1]);
-    assemble(source);
-    fclose(source);
+    assemble(argv[1]);
     return 0;
 }
