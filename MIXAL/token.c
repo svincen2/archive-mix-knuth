@@ -4,15 +4,9 @@
 #include "token.h"
 
 
-// Initialize a token.
-void token_init(token_pt tk)
-{
-    tk->type = NONE;
-    clear_lexeme(tk->lexeme);
-}
-
-
-// Clear a lexeme to all 0s.
+/*
+* Clear the lexeme to all 0s.
+*/
 void clear_lexeme(char lexeme[MAX_LEXEME_SIZE])
 {
     int i;
@@ -20,4 +14,14 @@ void clear_lexeme(char lexeme[MAX_LEXEME_SIZE])
     {
         lexeme[i] = 0;
     }
+}
+
+
+/*
+* Initialize the given token to NONE, and clear the lexeme.
+*/
+void token_init(token_pt tk)
+{
+    tk->type = NONE;
+    clear_lexeme(tk->lexeme);
 }

@@ -13,7 +13,7 @@
 // Type of token, one of: OP, NUM (or NONE if no token type exists).
 typedef enum
 {
-    NONE, OP, NUM, ID
+    NONE, OP, NUM, ID, END, BAD
 } token_type;
 
 
@@ -27,6 +27,5 @@ typedef struct
 
 // Functions for working with tokens.
 void token_init(token_pt);
-void clear_lexeme(char[MAX_LEXEME_SIZE]);
 
 #endif
