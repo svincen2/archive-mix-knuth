@@ -22,7 +22,8 @@ void skip_ws(FILE* input)
 
 
 /*
-*
+* Process an identifier from the given input file stream.
+* An identifier is any string of alphabetic characters [a-z, A-Z].
 */
 void identifier(token_pt tk, FILE* input)
 {
@@ -38,7 +39,7 @@ void identifier(token_pt tk, FILE* input)
 
 
 /*
-*
+* NOT YET IMPLEMENTED
 */
 int is_opcode(token_pt tk)
 {
@@ -66,7 +67,9 @@ void number(token_pt tk, FILE* input)
 
 
 /*
-*
+* Examine the token to determine if it is a valid,
+* single character operator, such as ':' or ','
+* If it is not a valid operator, it is a bad token.
 */
 void operator(token_pt tk)
 {
