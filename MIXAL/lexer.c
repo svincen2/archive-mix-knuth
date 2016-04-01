@@ -15,7 +15,34 @@ char next_char = 0;
 */
 void skip_ws(FILE* input)
 {
-    while((next_char = fgetc(input)) != EOF && isspace(next_char));
+    if(next_char && !isspace(next_char)) return;
+    while((next_char = fgetc(input)) != EOF && isspace(next_char))
+        ;
+}
+
+
+/*
+*
+*/
+void identifier(token_pt tk, FILE* input)
+{
+    int i = 1;       // Index of next char to fill in lexeme.
+    do
+    {
+        next_char = fgetc(input);
+        if(isalpha(next_char)) tk->lexeme[i++] = next_char;
+    }
+    while(isalpha(next_char));
+    tk->type = ID;
+}
+
+
+/*
+*
+*/
+int is_opcode(token_pt tk)
+{
+    return 0;
 }
 
 
@@ -30,11 +57,28 @@ void number(token_pt tk, FILE* input)
     do
     {
         next_char = fgetc(input);
-        if(next_char != EOF && !isspace(next_char))
+        if(next_char != EOF && isdigit(next_char))
             tk->lexeme[i++] = next_char;
     }
-    while(!(next_char == EOF || isspace(next_char)));
+    while(next_char != EOF && isdigit(next_char));
     tk->type = NUM;
+}
+
+
+/*
+*
+*/
+void operator(token_pt tk)
+{
+    switch(tk->lexeme[0])
+    {
+    case ',': tk->type = COMMA; break;
+    case '(': tk->type = LEFT_PAREN; break;
+    case ')': tk->type = RIGHT_PAREN; break;
+    case ':': tk->type = COLON; break;
+    default: tk->type = BAD;
+    }
+    next_char = 0;
 }
 
 
@@ -47,17 +91,19 @@ void next_token(token_pt tk, FILE* input)
 {
     token_init(tk);
     skip_ws(input);
-    if(feof(input)) tk->type = END;
+    if(feof(input)) tk->type = EOF;
     else
     {
         // Get the next character.
         if(next_char) tk->lexeme[0] = next_char;
         else tk->lexeme[0] = fgetc(input);
         
-        // Decide what to do next.
+        // Look at first char to determine possible tokens.
         if(isalpha(tk->lexeme[0]))
         {
             // Possibly an OP or an ID.
+            identifier(tk, input);
+            if(is_opcode(tk)) tk->type = OP;
         }
         else if(isdigit(tk->lexeme[0])
                 || tk->lexeme[0] == '+'
@@ -66,6 +112,7 @@ void next_token(token_pt tk, FILE* input)
             // Only possibility is a NUM token.
             number(tk, input);
         }
-        else tk->type = BAD;
+        // Token must be a valid operator, or it is a bad token.
+        else operator(tk);
     }
 }
