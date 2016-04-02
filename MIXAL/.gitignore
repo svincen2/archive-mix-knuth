@@ -1,5 +1,3 @@
 *.o
-*.mix
 *.exe
 *.txt
-test.c
