@@ -79,6 +79,7 @@ void operator(token_pt tk)
     case '(': tk->type = LEFT_PAREN; break;
     case ')': tk->type = RIGHT_PAREN; break;
     case ':': tk->type = COLON; break;
+    case '*': tk->type = ASTERISK; break;
     default: tk->type = BAD;
     }
     next_char = 0;
