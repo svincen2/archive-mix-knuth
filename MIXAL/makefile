@@ -16,4 +16,4 @@ token.o : token.c token.h
 	$(compile) token.c
 
 clean :
-	rm $(objs)
+	rm $(objs) *.exe
