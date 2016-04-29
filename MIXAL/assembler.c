@@ -36,6 +36,8 @@ void assemble(char* file)
     FILE* source = open_file(file);
     printf("Processing MIXAL source file %s...\n", file);
     token tk;
+    token_init(&tk);
+    fclose(source);
 }
 
 
