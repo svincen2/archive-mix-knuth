@@ -10,7 +10,8 @@
 
 /*
 * Attempts to open the file with the given name.
-* Param file - Name of the file to open.
+* param file - Name of the file to open.
+* return - Pointer to the open file.
 */
 FILE* open_file(char* file)
 {
@@ -28,6 +29,7 @@ FILE* open_file(char* file)
 * Assemble the given MIXAL source file into MIX machine language.
 * Writes the machine code to a file with the same name,
 * but with the extension ".o"
+* param file - Name of the file to assemble.
 */
 void assemble(char* file)
 {
@@ -40,8 +42,8 @@ void assemble(char* file)
 /*
 * Main entry point into the program.
 * Takes a MIXAL source file and assembles it into MIX machine language.
-* Param argc - Number of command line arguments.
-* Param argv - Command line arguments.
+* param argc - Number of command line arguments.
+* param argv - Command line arguments.
 * Argument 0: This programs name (probably assembler.exe)
 * Argument 1: MIXAL source file to process.
 */
@@ -55,3 +57,4 @@ int main(int argc, char** argv)
     assemble(argv[1]);
     return 0;
 }
+

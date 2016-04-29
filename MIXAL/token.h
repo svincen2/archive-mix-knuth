@@ -10,7 +10,7 @@
 #define MAX_LEXEME_SIZE 16
 
 
-// Type of token, one of: OP, NUM (or NONE if no token type exists).
+// Type of token.
 typedef enum
 {
     NONE, OP, NUM, ID, COMMA, LEFT_PAREN, RIGHT_PAREN, COLON, ASTERISK,
@@ -26,7 +26,9 @@ typedef struct
 } token, *token_pt;
 
 
-// Functions for working with tokens.
+/* Functions for working with tokens. */
+
+// Initialize the given token.
 void token_init(token_pt);
 
 #endif
