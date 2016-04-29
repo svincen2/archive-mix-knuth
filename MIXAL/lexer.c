@@ -12,6 +12,7 @@ char next_char = 0;
 
 /*
 * Skip over whitespace characters.
+* param input - Input file.
 */
 void skip_ws(FILE* input)
 {
@@ -24,6 +25,8 @@ void skip_ws(FILE* input)
 /*
 * Process an identifier from the given input file stream.
 * An identifier is any string of alphabetic characters [a-z, A-Z].
+* param tk - Token pointer.
+* param input - Input file.
 */
 void identifier(token_pt tk, FILE* input)
 {
@@ -31,7 +34,8 @@ void identifier(token_pt tk, FILE* input)
     do
     {
         next_char = fgetc(input);
-        if(isalpha(next_char)) tk->lexeme[i++] = next_char;
+        if(isalpha(next_char))
+            tk->lexeme[i++] = next_char;
     }
     while(isalpha(next_char));
     tk->type = ID;
@@ -49,8 +53,8 @@ int is_opcode(token_pt tk)
 
 /*
 * Read a number token from the input stream.
-* Param tk - Current working token.
-* Param input - Input file stream to read from.
+* param tk - Current working token.
+* param input - Input file stream to read from.
 */
 void number(token_pt tk, FILE* input)
 {
@@ -70,6 +74,7 @@ void number(token_pt tk, FILE* input)
 * Examine the token to determine if it is a valid,
 * single character operator, such as ':' or ','
 * If it is not a valid operator, it is a bad token.
+* param tk - Token pointer.
 */
 void operator(token_pt tk)
 {
@@ -90,6 +95,8 @@ void operator(token_pt tk)
 * Processes the input file and fills tk with the next token.
 * If a token was successfully created, 1 is returned,
 * otherwise 0 is returned.
+* param tk - Token pointer.
+* param input - Input file.
 */
 void next_token(token_pt tk, FILE* input)
 {
