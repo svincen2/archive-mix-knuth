@@ -7,13 +7,14 @@
 
 
 // Maximum size of a lexeme.
-#define MAX_LEXEME_SIZE 128
+#define MAX_LEXEME_SIZE 16
 
 
 // Type of token, one of: OP, NUM (or NONE if no token type exists).
 typedef enum
 {
-    NONE, OP, NUM, ID, COMMA, LEFT_PAREN, RIGHT_PAREN, COLON, ASTERISK, BAD
+    NONE, OP, NUM, ID, COMMA, LEFT_PAREN, RIGHT_PAREN, COLON, ASTERISK,
+    PLUS, MINUS, BAD
 } token_type;
 
 
