@@ -10,7 +10,7 @@
 #include <stdio.h>
 
 
-// MIX constant values.
+/* MIX constant values. */
 
 // Sign bit possible values.
 const char PLUS = 0;
@@ -62,6 +62,7 @@ int run(mix_pt, char*);
 * Startup initialization of a MIX machine.
 * Sets condition and overflow bits, clears registers,
 * and creates and initializes memory.
+* param machine - MIX machine to initialize.
 */
 void startup_init(mix_pt machine)
 {
@@ -83,20 +84,27 @@ void startup_init(mix_pt machine)
 /*
 * Register initialization of a MIX machine.
 * Clears all registers to +0.
+* param machine - MIX machine whos registers are to be initialized.
 */
 void reg_init(mix_pt machine)
 {
     printf("--Initializing registers...\n");
-    
+
+    // Clear the A and X word registers.
     clear_word(&machine->A);
     clear_word(&machine->X);
+
+    // Clear the index registers.
     clear_index_regs(machine);
+
+    // Clear the jump register.
     clear_reg(machine->J);
 }
 
 
 /*
 * Clear a MIX machine word to +0.
+* param w - Word to clear.
 */
 void clear_word(word_pt w)
 {
@@ -111,6 +119,7 @@ void clear_word(word_pt w)
 
 /*
 * Clear the index registers of a MIX machine.
+* param machine - MIX machine whos index registers are to be cleared.
 */
 void clear_index_regs(mix_pt machine)
 {
@@ -124,7 +133,8 @@ void clear_index_regs(mix_pt machine)
 
 
 /*
-* Clear a MIX 2 byte + sign register to +0.
+* Clear a MIX 2 byte and sign register to +0.
+* param reg - Register to clear.
 */
 void clear_reg(char reg[INDEX_REG_SIZE])
 {
@@ -139,30 +149,34 @@ void clear_reg(char reg[INDEX_REG_SIZE])
 
 /*
 * Initialize MIX memory.
+* param machine - MIX machine whos memory is to be initialized.
 */
 void mem_init(mix_pt machine)
 {
     printf("--Initializing memory...\n");
-    
+
+    // Allocate MIX memory.
     machine->mem = (word_pt) calloc(MEM_SIZE, sizeof(word));
 }
 
 
 /*
 * Release MIX memory.
+* param machine - MIX machine to be shutdown.
 */
 void shutdown(mix_pt machine)
 {
     printf("Shutting down MIX machine...\n");
-    
+
+    // Free MIX memory.
     free(machine->mem);
 }
 
 
 /*
 * Run the given program on the MIX machine given.
-* Param machine - MIX machine.
-* Param program - MIX program.
+* param machine - MIX machine.
+* param program - MIX program.
 */
 int run(mix_pt machine, char* file)
 {
@@ -181,8 +195,8 @@ int run(mix_pt machine, char* file)
 /*
 * Main entry point into the program.
 * Runs a MIX program file given in the command line arguments.
-* Param argc - Number of command line arguments.
-* Param argv - Command line arguments.
+* param argc - Number of command line arguments.
+* param argv - Command line arguments.
 * Argument 0: This program's name (probably mix.exe).
 * Argument 1: MIX program to run.
 */
