@@ -49,8 +49,8 @@ void clear_word(word_pt);
 // Clear machine index registers.
 void clear_index_regs(mix_pt);
 
-// Clear an index register.
-void clear_reg(char[INDEX_REG_SIZE]);
+// Clear a machine half-word.
+void clear_half_word(half_word_pt);
 
 // Run MIX program.
 int run(mix_pt, char*);
@@ -98,7 +98,7 @@ void reg_init(mix_pt machine)
     clear_index_regs(machine);
 
     // Clear the jump register.
-    clear_reg(machine->J);
+    clear_half_word(&machine->J);
 }
 
 
@@ -123,26 +123,26 @@ void clear_word(word_pt w)
 */
 void clear_index_regs(mix_pt machine)
 {
-    clear_reg(machine->I1);
-    clear_reg(machine->I2);
-    clear_reg(machine->I3);
-    clear_reg(machine->I4);
-    clear_reg(machine->I5);
-    clear_reg(machine->I6);
+    clear_half_word(&machine->I1);
+    clear_half_word(&machine->I2);
+    clear_half_word(&machine->I3);
+    clear_half_word(&machine->I4);
+    clear_half_word(&machine->I5);
+    clear_half_word(&machine->I6);
 }
 
 
 /*
-* Clear a MIX 2 byte and sign register to +0.
-* param reg - Register to clear.
+* Clear a MIX machine half-word to +0.
+* param hw - Half word clear.
 */
-void clear_reg(char reg[INDEX_REG_SIZE])
+void clear_half_word(half_word_pt hw)
 {
-    reg[0] = PLUS;
+    hw->sign = PLUS;
     int i;
-    for(i = 1; i < INDEX_REG_SIZE; ++i)
+    for(i = 0; i < NUM_HALF_WORD_BYTES; ++i)
     {
-        reg[i] = 0;
+        hw->byte[i] = 0;
     }
 }
 
@@ -214,3 +214,4 @@ int main(int argc, char** argv)
     shutdown(&machine);
     return result;
 }
+

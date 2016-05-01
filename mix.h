@@ -21,14 +21,18 @@
 *   O - Overflow indicator.
 *       Can take on two values, NO_OVERFLOW, OVERFLOW
 * Memory - 4000 words from [0, 3999].
+*
+* Half-word - Consists of a sign and 2 bytes.
+* Note: This is not explicitly specified by Knuth.
+*       The addition of a half word is for readability only.
 */
 #ifndef MIX_MACHINE_H
 #define MIX_MACHINE_H
 
 
 #define NUM_WORD_BYTES 5
+#define NUM_HALF_WORD_BYTES 2
 #define NUM_INDEX_REGS 6
-#define INDEX_REG_SIZE 3
 
 // Machine word.
 typedef struct _word
@@ -37,23 +41,36 @@ typedef struct _word
     char byte[NUM_WORD_BYTES];
 } word, *word_pt;
 
+// Machine half-word.
+typedef struct _half_word
+{
+    char sign;
+    char byte[NUM_HALF_WORD_BYTES];
+} half_word, *half_word_pt;
+
 
 // Mix machine.
 typedef struct _mix
 {
     // Program counter.
     word PC;
-    
-    // Registers.
+
+    // Accumulator.
     word A;
+
+    // Extension register.
     word X;
-    char I1[INDEX_REG_SIZE];
-    char I2[INDEX_REG_SIZE];
-    char I3[INDEX_REG_SIZE];
-    char I4[INDEX_REG_SIZE];
-    char I5[INDEX_REG_SIZE];
-    char I6[INDEX_REG_SIZE];
-    char J[INDEX_REG_SIZE];
+
+    // Index resisters.
+    half_word I1;
+    half_word I2;
+    half_word I3;
+    half_word I4;
+    half_word I5;
+    half_word I6;
+
+    // Jump registers.
+    half_word J;
 
     // Condition bit.
     char cond;

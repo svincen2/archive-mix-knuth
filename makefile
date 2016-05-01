@@ -10,4 +10,4 @@ mix.o : mix.c mix.h mix_opcodes.h
 	$(compile) mix.c
 
 clean :
-	rm $(objs)
+	rm $(objs) *.exe
