@@ -28,13 +28,13 @@
 
 // Store operators.
 #define STA 24
-#define STX 31
 #define ST1 25
 #define ST2 26
 #define ST3 27
 #define ST4 28
 #define ST5 29
 #define ST6 30
+#define STX 31
 #define STJ 32
 #define STZ 33
 
@@ -46,13 +46,13 @@
 
 // Address transfer operators.
 #define ENTA 48     #define ENT_F 2 // F = 2.
-#define ENTX 55
 #define ENT1 49
 #define ENT2 50
 #define ENT3 51
 #define ENT4 52
 #define ENT5 53
 #define ENT6 54
+#define ENTX 55
 
 #define ENNA ENTA   #define ENN_F 3 // F = 3.
 #define ENNX ENTX
@@ -83,13 +83,13 @@
 
 // Comparison operators.
 #define CMPA 56
-#define CMPX 63
 #define CMP1 57
 #define CMP2 58
 #define CMP3 59
 #define CMP4 60
 #define CMP5 61
 #define CMP6 62
+#define CMPX 63
 
 // Jump operators.
 #define JMP 39      #define JMP_F 0     // F = 0.
