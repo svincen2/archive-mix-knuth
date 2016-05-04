@@ -14,18 +14,10 @@ void skip_ws(FILE*);
 void get_next_char(token_pt, FILE*);
 void get_next_token(token_pt, FILE*);
 void determine_token(token_pt, FILE*);
-void identifier(token_pt, FILE*);
+void alpha_num(token_pt, FILE*);
 void number(token_pt, FILE*);
 void operator(token_pt);
 
-
-/*
-* NOT YET IMPLEMENTED
-*/
-int is_opcode(token_pt tk)
-{
-    return 0;
-}
 
 /*
 * Processes the input file and fills tk with the next token.
@@ -63,55 +55,70 @@ void skip_ws(FILE* input)
 
 /*
 * Get the next character.
+* param tk - Token pointer.
+* param input - Input file.
 */
 void get_next_char(token_pt tk, FILE* input)
 {
+    // Leftover character, use it.
     if(next_char) tk->lexeme[0] = next_char;
+
+    // No leftover char, read next from input.
     else tk->lexeme[0] = fgetc(input);
 }
 
 /*
 * Get the next token from the input file.
+* The first character has already been read.
+* The value of first character determines how
+* to evaluate further.
 * param tk - Token pointer.
 * param input - Input file.
 */
 void get_next_token(token_pt tk, FILE* input)
 {
-    // Look at first char to determine possible tokens.
-    if(isalpha(tk->lexeme[0]))
+    if(isalnum(tk->lexeme[0]))
     {
-        // Possibly an OP or an ID.
-        identifier(tk, input);
-        if(is_opcode(tk)) tk->type = OP;
+        // An alpha numeric token.
+        alpha_num(tk, input);
     }
-    else if(isdigit(tk->lexeme[0])
-            || tk->lexeme[0] == '+'
-            || tk->lexeme[0] == '-')
+    else if(tk->lexeme[0] == '+' || tk->lexeme[0] == '-')
     {
-        // Only possibility is a NUM token.
+        // Only possibility is a number.
         number(tk, input);
     }
-    // Token must be a valid operator, or it is a bad token.
+    // Only possibility is an operator.
     else operator(tk);
 }
 
 /*
-* Process an identifier from the given input file stream.
-* An identifier is any string of alphabetic characters [a-z, A-Z].
+* Read an alhpa-numeric token from input stream.
+* While reading, determines if the token is strictly
+* alphabetic, strictly a number, or a combination.
 * param tk - Token pointer.
 * param input - Input file.
 */
-void identifier(token_pt tk, FILE* input)
+void alpha_num(token_pt tk, FILE* input)
 {
-    int i = 1;       // Index of next char to fill in lexeme.
+    // First char was either alphabetic or a digit.
+    token_type tt = isalpha(next_char)? ALPHA : NUM;
+    int i = 0;
     do
     {
         next_char = fgetc(input);
-        if(isalpha(next_char))
-            tk->lexeme[i++] = next_char;
+
+        // Skip remaining chars if too large for buffer.
+        if(++i >= MAX_LEXEME_SIZE) continue;
+
+        // Add alpha-numeric character to lexeme.
+        if(next_char != EOF && isalnum(next_char))
+            tk->lexeme[i] = next_char;
+
+        if(isalpha(next_char) && tt == NUM) tt = ALPHA_NUM;
+        else if(isdigit(next_char) && tt == ALPHA) tt = ALPHA_NUM;
     }
-    while(isalpha(next_char));
-    tk->type = ID;
+    while(next_char != EOF && isalnum(next_char));
+    tk->type = tt;
 }
 
 /*
@@ -142,12 +149,15 @@ void operator(token_pt tk)
 {
     switch(tk->lexeme[0])
     {
-    case ',': tk->type = COMMA; break;
-    case '(': tk->type = LEFT_PAREN; break;
-    case ')': tk->type = RIGHT_PAREN; break;
-    case ':': tk->type = COLON; break;
-    case '*': tk->type = ASTERISK; break;
-    default: tk->type = BAD;
+    case ',': 
+    case '(':
+    case ')':
+    case ':':
+    case '*':
+        tk->type = OP;
+        break;
+    default:
+        tk->type = BAD;
     }
     next_char = 0;
 }
