@@ -183,7 +183,7 @@ int run(mix_pt machine, char* file)
     FILE* program;
     if(!(program = fopen(file, "r")))
     {
-        printf("Unable to open file: %s", file);
+        printf("Unable to open file: %s\n", file);
         return -1;
     }
     printf("Running program %s...\n", file);
