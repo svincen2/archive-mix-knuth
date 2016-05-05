@@ -1,7 +1,9 @@
+proj_name = assembler
+
 objs = token.o lexer.o assembler.o
 
 compile = gcc -std=c11 -c
-link = gcc -o assembler
+link = gcc -o $(proj_name)
 
 assembler : $(objs)
 	$(link) $(objs)
