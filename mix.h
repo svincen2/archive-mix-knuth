@@ -29,12 +29,14 @@
 #ifndef MIX_MACHINE_H
 #define MIX_MACHINE_H
 
-
+// Number of bytes for machine words.
 #define NUM_WORD_BYTES 5
 #define NUM_HALF_WORD_BYTES 2
+
+// Number of index registers.
 #define NUM_INDEX_REGS 6
 
-// Index locations of MIX machine instructions.
+// Index locations of different parts of MIX machine instructions.
 #define MIX_ADDR_1 0
 #define MIX_ADDR_2 1
 #define MIX_INDEX 2
