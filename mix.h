@@ -35,7 +35,7 @@
 #define NUM_INDEX_REGS 6
 
 // Machine byte.
-typedef unsigned char mix_byte;
+#include "mix_byte.h"
 
 // Machine word.
 typedef struct _word
