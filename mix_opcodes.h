@@ -10,21 +10,21 @@
 
 // Load operators.
 #define LDA 8
-#define LDX 15
 #define LD1 9
 #define LD2 10
 #define LD3 11
 #define LD4 12
 #define LD5 13
 #define LD6 14
+#define LDX 15
 #define LDAN 16
-#define LDXN 23
 #define LD1N 17
 #define LD2N 18
 #define LD3N 19
 #define LD4N 20
 #define LD5N 21
 #define LD6N 22
+#define LDXN 23
 
 // Store operators.
 #define STA 24
@@ -103,74 +103,74 @@
 #define JNE JMP     #define JNE_F 8     // F = 8.
 #define JLE JMP     #define JLE_F 9     // F = 9.
 
-#define JAN 40      // F = 0.
-#define JAZ JAN     // F = 1.
-#define JAP JAN     // F = 2.
-#define JANN JAN    // F = 3.
-#define JANZ JAN    // F = 4.
-#define JANP JAN    // F = 5.
+#define JAN 40      #define JAN_F 0     // F = 0.
+#define JAZ JAN     #define JAZ_F 1     // F = 1.
+#define JAP JAN     #define JAP_F 2     // F = 2.
+#define JANN JAN    #define JANN_F 3    // F = 3.
+#define JANZ JAN    #define JANZ_F 4    // F = 4.
+#define JANP JAN    #define JANP_F 5    // F = 5.
 
-#define JXN 47      // F = 0.
-#define JXZ JXN     // F = 1.
-#define JXP JXN     // F = 2.
-#define JXNN JXN    // F = 3.
-#define JXNZ JXN    // F = 4.
-#define JXNP JXN    // F = 5.
+#define JXN 47      #define JXN_F 0     // F = 0.
+#define JXZ JXN     #define JXZ_F 1     // F = 1.
+#define JXP JXN     #define JXP_F 2     // F = 2.
+#define JXNN JXN    #define JXNN_F 3    // F = 3.
+#define JXNZ JXN    #define JXNZ_F 4    // F = 4.
+#define JXNP JXN    #define JXNZ_P 5    // F = 5.
 
-#define J1N 41      // F = 0.
-#define J1Z J1N     // F = 1.
-#define J1P J1N     // F = 2.
-#define J1NN J1N    // F = 3.
-#define J1NZ J1N    // F = 4.
-#define J1NP J1N    // F = 5.
+#define J1N 41      #define J1N_F 0     // F = 0.
+#define J1Z J1N     #define J1Z_F 1     // F = 1.
+#define J1P J1N     #define J1P_F 2     // F = 2.
+#define J1NN J1N    #define J1NN_F 3    // F = 3.
+#define J1NZ J1N    #define J1NZ_F 4    // F = 4.
+#define J1NP J1N    #define J1NP_F 5    // F = 5.
 
-#define J2N 42      // F = 0.
-#define J2Z J2N     // F = 1.
-#define J2P J2N     // F = 2.
-#define J2NN J2N    // F = 3.
-#define J2NZ J2N    // F = 4.
-#define J2NP J2N    // F = 5.
+#define J2N 42      #define J2N_F 0     // F = 0.
+#define J2Z J2N     #define J2Z_F 1     // F = 0.
+#define J2P J2N     #define J2P_F 2     // F = 2.
+#define J2NN J2N    #define J2NN_F 3    // F = 3.
+#define J2NZ J2N    #define J2NZ_F 4    // F = 4.
+#define J2NP J2N    #define J2NP_F 5    // F = 5.
 
-#define J3N 43      // F = 0.
-#define J3Z J3N     // F = 1.
-#define J3P J3N     // F = 2.
-#define J3NN J3N    // F = 3.
-#define J3NZ J3N    // F = 4.
-#define J3NP J3N    // F = 5.
+#define J3N 43      #define J3N_F 0     // F = 0.
+#define J3Z J3N     #define J3Z_F 1     // F = 1.
+#define J3P J3N     #define J3P_F 2     // F = 2.
+#define J3NN J3N    #define J3NN_F 3    // F = 3.
+#define J3NZ J3N    #define J3NZ_F 4    // F = 4.
+#define J3NP J3N    #define J3NP_F 5    // F = 5.
 
-#define J4N 44      // F = 0.
-#define J4Z J4N     // F = 1.
-#define J4P J4N     // F = 2.
-#define J4NN J4N    // F = 3.
-#define J4NZ J4N    // F = 4.
-#define J4NP J4N    // F = 5.
+#define J4N 44      #define J4N_F 0     // F = 0.
+#define J4Z J4N     #define J4Z_F 1     // F = 1.
+#define J4P J4N     #define J4P_F 2     // F = 2.
+#define J4NN J4N    #define J4NN_F 3    // F = 3.
+#define J4NZ J4N    #define J4NZ_F 4    // F = 4.
+#define J4NP J4N    #define J4NP_F 5    // F = 5.
 
-#define J5N 45      // F = 0.
-#define J5Z J5N     // F = 1.
-#define J5P J5N     // F = 2.
-#define J5NN J5N    // F = 3.
-#define J5NZ J5N    // F = 4.
-#define J5NP J5N    // F = 5.
+#define J5N 45      #define J5N_F 0     // F = 0.
+#define J5Z J5N     #define J5Z_F 1     // F = 1.
+#define J5P J5N     #define J5P_F 2     // F = 2.
+#define J5NN J5N    #define J5NN_F 3    // F = 3.
+#define J5NZ J5N    #define J5NZ_F 4    // F = 4.
+#define J5NP J5N    #define J5NP_F 5    // F = 5.
 
-#define J6N 46      // F = 0.
-#define J6Z J6N     // F = 1.
-#define J6P J6N     // F = 2.
-#define J6NN J6N    // F = 3.
-#define J6NZ J6N    // F = 4.
-#define J6NP J6N    // F = 5.
+#define J6N 46      #define J6N_F 0     // F = 0.
+#define J6Z J6N     #define J6Z_F 1     // F = 1.
+#define J6P J6N     #define J6P_F 2     // F = 2.
+#define J6NN J6N    #define J6NN_F 3    // F = 3.
+#define J6NZ J6N    #define J6NZ_F 4    // F = 4.
+#define J6NP J6N    #define J6NP_F 5    // F = 5.
 
 // Miscellaneous operators.
-#define SLA 6       // F = 0.
-#define SRA SLA     // F = 1.
-#define SLAX SLA    // F = 2.
-#define SRAX SLA    // F = 3.
-#define SLC SLA     // F = 4.
-#define SRC SLA     // F = 5.
+#define SLA 6       #define SLA_F 0     // F = 0.
+#define SRA SLA     #define SRA_F 1     // F = 1.
+#define SLAX SLA    #define SLAX_F 2    // F = 2.
+#define SRAX SLA    #define SRAX_F 3    // F = 3.
+#define SLC SLA     #define SLC_F 4     // F = 4.
+#define SRC SLA     #define SRC_F 5     // F = 5.
 
 #define MOVE 7
 
 #define NOP 0
-#define HLT 5       // F = 2.
+#define HLT 5       #define HLT_F 2     // F = 2.
 
 // Input/Output operators.
 #define IN 36
@@ -180,7 +180,7 @@
 #define JBUS 34
 
 // Conversion operators.
-#define NUM 5       // F = 0.
-#define CHAR NUM    // F = 1.
+#define NUM 5       #define NUM_F 0     // F = 0.
+#define CHAR NUM    #define CHAR_F 1    // F = 1.
 
 #endif
