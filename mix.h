@@ -34,18 +34,21 @@
 #define NUM_HALF_WORD_BYTES 2
 #define NUM_INDEX_REGS 6
 
+// Machine byte.
+typedef unsigned char mix_byte;
+
 // Machine word.
 typedef struct _word
 {
-    char sign;
-    char byte[NUM_WORD_BYTES];
+    mix_byte sign;
+    mix_byte byte[NUM_WORD_BYTES];
 } word, *word_pt;
 
 // Machine half-word.
 typedef struct _half_word
 {
-    char sign;
-    char byte[NUM_HALF_WORD_BYTES];
+    mix_byte sign;
+    mix_byte byte[NUM_HALF_WORD_BYTES];
 } half_word, *half_word_pt;
 
 
@@ -73,10 +76,10 @@ typedef struct _mix
     half_word J;
 
     // Condition bit.
-    char cond;
+    mix_byte condition;
 
     // Overflow bit.
-    char overflow;
+    mix_byte overflow;
 
     // Memory.
     word_pt mem;

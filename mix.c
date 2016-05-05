@@ -13,17 +13,17 @@
 /* MIX constant values. */
 
 // Sign bit possible values.
-const char PLUS = 0;
-const char MINUS = 1;
+const mix_byte PLUS = 0;
+const mix_byte MINUS = 1;
 
 // Comparison possible values.
-const char LESS = 0;
-const char EQUAL = 1;
-const char GREATER = 2;
+const mix_byte LESS = 0;
+const mix_byte EQUAL = 1;
+const mix_byte GREATER = 2;
 
 // Overflow indicator possible values.
-const char NO_OVERFLOW = 0;
-const char OVERFLOW = 1;
+const mix_byte NO_OVERFLOW = 0;
+const mix_byte OVERFLOW = 1;
 
 // Memory size, in words.
 const int MEM_SIZE = 4000;
@@ -70,7 +70,7 @@ void startup_init(mix_pt machine)
     
     // Set the status bits for the comparison bit and overflow bit to:
     // EQUAL and NO_OVERFLOW, repectively.
-    machine->cond = EQUAL;
+    machine->condition = EQUAL;
     machine->overflow = NO_OVERFLOW;
 
     // Initialize registers to +0.
