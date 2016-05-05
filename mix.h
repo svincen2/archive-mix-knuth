@@ -34,6 +34,14 @@
 #define NUM_HALF_WORD_BYTES 2
 #define NUM_INDEX_REGS 6
 
+// Index locations of MIX machine instructions.
+#define MIX_ADDR_1 0
+#define MIX_ADDR_2 1
+#define MIX_INDEX 2
+#define MIX_OP_MOD 3
+#define MIX_FIELD 3
+#define MIX_OPCODE 4
+
 // Machine byte.
 #include "mix_byte.h"
 
