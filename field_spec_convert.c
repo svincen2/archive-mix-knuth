@@ -1,4 +1,5 @@
 #include "field_spec_convert.h"
+#include <assert.h>
 
 
 // Divisor to separate field specification L and R values.
@@ -35,6 +36,7 @@ mix_byte field_r(mix_byte field_spec)
 */
 mix_byte field_spec(mix_byte left, mix_byte right)
 {
+    assert(right <= 5);
     return left * 8 + right;
 }
 
