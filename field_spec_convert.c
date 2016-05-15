@@ -5,6 +5,12 @@
 // Divisor to separate field specification L and R values.
 const mix_byte FIELD_SPEC_DIVISOR = 8;
 
+// Maximum value of R (right) part of field specification.
+const mix_byte MAX_R_VALUE = 5;
+
+// Invalid field specification.
+const mix_byte INVALID_FIELD_SPEC = 0;
+
 
 /*
 * Return the L (left) part of the field specification value.
@@ -36,7 +42,9 @@ mix_byte field_r(mix_byte field_spec)
 */
 mix_byte field_spec(mix_byte left, mix_byte right)
 {
-    assert(right <= 5);
-    return left * 8 + right;
+    if (right >= MAX_R_VALUE) {
+        return INVALID_FIELD_SPEC;
+    }
+    return left * FIELD_SPEC_DIVISOR + right;
 }
 
