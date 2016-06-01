@@ -1,10 +1,10 @@
-objs = string_hash_map.o
+objs = string_int_map.o
 
 compile = gcc -std=c11 -c
 
 
-string_hash_map.o : string_hash_map.h string_hash_map.c
-	$(compile) string_hash_map.c
+string_int_map.o : string_int_map.h string_int_map.c
+	$(compile) string_int_map.c
 
 clean :
 	rm $(objs)
